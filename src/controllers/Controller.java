@@ -33,25 +33,21 @@ public class Controller {
         switch (repository) {
             case "Song":
                 return songRepository.getAll()
-                        .values()
                         .stream()
                         .map(object -> (Song) object)
                         .collect(Collectors.toList());
             case "Musician":
                 return musicianRepository.getAll()
-                        .values()
                         .stream()
                         .map(object -> (Musician) object)
                         .collect(Collectors.toList());
             case "Album":
                 return albumRepository.getAll()
-                        .values()
                         .stream()
                         .map(object -> (Album) object)
                         .collect(Collectors.toList());
             case "Category":
                 return categoryRepository.getAll()
-                        .values()
                         .stream()
                         .map(object -> (Category) object)
                         .collect(Collectors.toList());
@@ -124,7 +120,6 @@ public class Controller {
 
     public List<Song> searchBySongName(String title) {
         List<Song> songs = songRepository.getAll()
-                .values()
                 .stream()
                 .filter(x -> x.getTitle()
                         .equals(title))
@@ -134,7 +129,6 @@ public class Controller {
 
     public List<Musician> searchByMusicianName(String name) {
         List<Musician> musicians = musicianRepository.getAll()
-                .values()
                 .stream()
                 .filter(x -> x.getName()
                         .equals(name))
@@ -144,7 +138,6 @@ public class Controller {
 
     public List<Album> searchByAlbumName(String name) {
         List<Album> albums = albumRepository.getAll()
-                .values()
                 .stream()
                 .filter(x -> x.getName()
                         .equals(name))
@@ -154,7 +147,6 @@ public class Controller {
 
     public List<Category> searchByCategoryName(String name) {
         List<Category> categories = categoryRepository.getAll()
-                .values()
                 .stream()
                 .filter(x -> x.getName()
                         .equals(name))

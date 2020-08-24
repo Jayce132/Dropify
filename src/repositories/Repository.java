@@ -5,7 +5,7 @@ import domain.Model;
 import java.util.List;
 import java.util.Map;
 public interface Repository<SongMusicianAlbumOrCategory extends Model> {
-    public Map<Integer, SongMusicianAlbumOrCategory> getAll();
+    public List<SongMusicianAlbumOrCategory> getAll();
 
     public SongMusicianAlbumOrCategory getByID(Integer id) throws Exception;
 

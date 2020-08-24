@@ -5,21 +5,21 @@ import domain.Song;
 import domain.Musician;
 import domain.Album;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class SongRepository implements Repository<Song> {
-    private final HashMap<Integer, Song> songRepository = new HashMap<>();
+    private final List<Song> songRepository = new ArrayList<>();
     private static Integer ID = 0;
 
-    public HashMap<Integer, Song> getAll() {
+    public List<Song> getAll() {
         return songRepository;
     }
 
     public Song getByID(Integer id) throws Exception {
-        if (songRepository.containsKey(id)) {
-            return songRepository.get(id);
+        for (Song song : songRepository) {
+            if (song.get_id().equals(id)) {
+                return song;
+            }
         }
         throw new Exception("Song not found by ID");
     }
@@ -31,31 +31,35 @@ public class SongRepository implements Repository<Song> {
                     (Album) args.get("album"),
                     (HashSet<Category>) args.get("categories"));
             ID++;
-            songRepository.put(ID, song);
+            song.set_id(ID);
+            songRepository.add(song);
         }
     }
 
     public boolean modify(Integer id, Map<String, Object> args) {
-        if (songRepository.containsKey(id)) {
-            Song song = songRepository.get(id);
-            if (args.containsKey("title")
-                    && args.containsKey("musician")
-                    && args.containsKey("album")
-                    && args.containsKey("categories")) {
-                song.setTitle((String) args.get("title"));
-                song.setMusician((Musician) args.get("musician"));
-                song.setAlbum((Album) args.get("album"));
-                song.setCategories((HashSet<Category>) args.get("categories"));
-                return true;
+        for (Song song : songRepository) {
+            if (song.get_id().equals(id)) {
+                if (args.containsKey("title")
+                        && args.containsKey("musician")
+                        && args.containsKey("album")
+                        && args.containsKey("categories")) {
+                    song.setTitle((String) args.get("title"));
+                    song.setMusician((Musician) args.get("musician"));
+                    song.setAlbum((Album) args.get("album"));
+                    song.setCategories((HashSet<Category>) args.get("categories"));
+                    return true;
+                }
             }
         }
         return false;
     }
 
     public boolean delete(Integer id) {
-        if (songRepository.containsKey(id)) {
-            songRepository.remove(id);
-            return true;
+        for (Song song : songRepository) {
+            if (song.get_id().equals(id)) {
+                songRepository.remove(song);
+                return true;
+            }
         }
         return false;
     }
