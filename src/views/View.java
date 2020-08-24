@@ -55,6 +55,7 @@ public class View {
                         System.out.println("No album repository");
                     }
 
+                    HashSet<Category> categories = new HashSet<>();
                     while (true) {
                         System.out.println("Pick the number of the Category you want: ");
                         System.out.println("You can pick one to three different categories, type 0 when it's enough");
@@ -70,7 +71,6 @@ public class View {
                                 break;
                             }
                             Category category = (Category) categoryRepo.get(categoryIndex - 1);
-                            HashSet<Category> categories = new HashSet<>();
                             categories.add(category);
                             if (categories.size() >= 3) {
                                 break;
@@ -79,8 +79,9 @@ public class View {
                         } catch (Exception e) {
                             System.out.println("No category repository");
                         }
-                        controller.add("Song", map);
                     }
+
+                    controller.add("Song", map);
                         try {
                             System.out.println(controller.getAll("Song"));
                         } catch (Exception e) {
