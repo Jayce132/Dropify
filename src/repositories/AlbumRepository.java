@@ -1,10 +1,8 @@
 package repositories;
 
 import domain.Album;
-import domain.Musician;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,17 +55,3 @@ public class AlbumRepository implements Repository<Album> {
         return false;
     }
 }
-//if (albumRepository.containsKey(id)) {
-//        Album album = albumRepository.get(id);
-//        if (args.containsKey("name") && args.containsKey("yearOfRelease")) {
-//        album.setName((String)args.get("name"));
-//        album.setYearOfRelease((Integer)args.get("yearOfRelease"));
-//        return true;
-//        }
-//        }
-//        return false;
-//if (albumRepository.containsKey(id)) {
-//        albumRepository.remove(id);
-//        return true;
-//        }
-//        return false;

@@ -37,23 +37,16 @@ public class MusicianRepositoryTest {
         Map<String, Object> args = new HashMap<>();
         args.put("name", "Modified Musician");
         assert musicianRepository.modify(1, args);
-        System.out.println(musicianRepository.getAll());
     }
 
     @Test
     void delete() {
         assert musicianRepository.delete(1);
-        System.out.println(musicianRepository.getAll());
         try {
             musicianRepository.getByID(1);
             assert false;
         } catch (Exception e) {
             assert true;
         }
-    }
-
-    @Test
-    void view() {
-        System.out.println(musicianRepository.getAll());
     }
 }

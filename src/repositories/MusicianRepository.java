@@ -3,7 +3,6 @@ package repositories;
 import domain.Musician;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,9 +54,3 @@ public class MusicianRepository implements Repository<Musician> {
         return false;
     }
 }
-//        List<Musician> filtered = musicianRepository.stream().filter(x -> x.get_id().equals(id)).collect(Collectors.toList());
-//        if (filtered.size() > 0) {
-//            return filtered.get(0);
-//        } else {
-//            throw new Exception("Musician not found by ID");
-//        }

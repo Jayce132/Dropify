@@ -7,13 +7,10 @@ import domain.Musician;
 
 import java.util.*;
 
+
 public class View {
     private final Scanner scanner = new Scanner(System.in);
     private final Controller controller = Controller.getInstance();
-
-    public View() {
-
-    }
 
     public void start() {
         while (true) {
@@ -27,6 +24,7 @@ public class View {
                     String title = scanner.nextLine();
                     Map<String, Object> map = new HashMap<>();
                     map.put("title", title);
+
                     System.out.println("Pick the number of the Musician you want: ");
                     try {
                         int number = 1;
@@ -41,6 +39,7 @@ public class View {
                     } catch (Exception e) {
                         System.out.println("No musician repository");
                     }
+
                     System.out.println("Pick the number of the Album you want: ");
                     try {
                         int number = 1;
@@ -55,6 +54,7 @@ public class View {
                     } catch (Exception e) {
                         System.out.println("No album repository");
                     }
+
                     while (true) {
                         System.out.println("Pick the number of the Category you want: ");
                         System.out.println("You can pick one to three different categories, type 0 when it's enough");
@@ -72,7 +72,7 @@ public class View {
                             Category category = (Category) categoryRepo.get(categoryIndex - 1);
                             HashSet<Category> categories = new HashSet<>();
                             categories.add(category);
-                            if (categories.size() == 3) {
+                            if (categories.size() >= 3) {
                                 break;
                             }
                             map.put("categories", categories);
@@ -80,12 +80,13 @@ public class View {
                             System.out.println("No category repository");
                         }
                         controller.add("Song", map);
+                    }
                         try {
                             System.out.println(controller.getAll("Song"));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }
+
                 } else if ("Musician".equals(toAdd)) {
                     System.out.println("Enter musician name: ");
                     String name = scanner.nextLine();

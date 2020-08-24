@@ -5,7 +5,11 @@ import domain.Song;
 import domain.Musician;
 import domain.Album;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+
 
 public class SongRepository implements Repository<Song> {
     private final List<Song> songRepository = new ArrayList<>();
@@ -25,7 +29,10 @@ public class SongRepository implements Repository<Song> {
     }
 
     public void add(Map<String, Object> args) {
-        if (args.containsKey("title") && args.containsKey("musician") && args.containsKey("album") && args.containsKey("categories")) {
+        if (args.containsKey("title")
+                && args.containsKey("musician")
+                && args.containsKey("album")
+                && args.containsKey("categories")) {
             Song song = new Song((String) args.get("title"),
                     (Musician) args.get("musician"),
                     (Album) args.get("album"),

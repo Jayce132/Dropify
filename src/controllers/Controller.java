@@ -154,12 +154,3 @@ public class Controller {
         return categories;
     }
 }
-
-//    SongRepository songRepository,
-//    MusicianRepository musicianRepository,
-//    AlbumRepository albumRepository,
-//    CategoryRepository categoryRepository) {
-//        this.songRepository = songRepository;
-//        this.musicianRepository = musicianRepository;
-//        this.albumRepository = albumRepository;
-//        this.categoryRepository = categoryRepository;
