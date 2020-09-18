@@ -29,7 +29,7 @@ public class Category extends Entity {
 
     @Override
     public String toString() {
-        return name + ": " + description;
+        return name + ": " + description + " ";
     }
 
     @Override

@@ -1,5 +1,4 @@
 package com.sampleApps;
-
 import views.View;
 
 public class Main {
